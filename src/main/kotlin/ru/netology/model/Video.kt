@@ -1,7 +1,5 @@
 package ru.netology.model
 
-import ru.netology.model.attachments.Attachment
-
 data class Video (
     val id: Int,
     val ownerId: Int,
@@ -49,6 +47,5 @@ data class Video (
 
     )
 {
-
 
 }

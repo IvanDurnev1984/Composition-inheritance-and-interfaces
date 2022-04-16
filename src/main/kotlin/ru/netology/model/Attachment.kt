@@ -1,24 +1,38 @@
 package ru.netology.model
 
-data class Attachment (
-    val photo: ru.netology.model.Photo?,
-    val postedPhoto: ru.netology.model.PostedPhoto?,
-    val video: ru.netology.model.Video?,
-    val audio: ru.netology.model.Audio?,
-    val doc: ru.netology.model.Doc?,
-    val graffiti: ru.netology.model.Graffiti?,
-    val link: ru.netology.model.Link?,
-    val note: ru.netology.model.Note?,
-    val app: ru.netology.model.App?,
-    val poll: ru.netology.model.Poll?,
-    val page: ru.netology.model.Page?,
-    val album: ru.netology.model.Album?,
-    val photosList: List<Int>?,
-    val market: ru.netology.model.Market?,
-    val marketAlbum: ru.netology.model.MarketAlbum?,
-    val sticker: ru.netology.model.Stiker?,
-    val prettyCards: ru.netology.model.PrettyCard?,
-    val event: ru.netology.model.Event?
-    ) {
-
+sealed class Attachment(
+    val type: String,
+    val attach: ru.netology.model.Attachment?
+) {
+    data class Graffiti(
+        val id: Int,
+        val ownerIid: Int,
+        val photo130: String,
+        val photo604: String
+    ) : ru.netology.model.Attachment("graffiti", null)
+    data class Link(
+        val id: Int,
+        val ownerId: Int,
+        val url: String,
+        val title: String,
+        val caption: String,
+        val description: String,
+        val photo: ru.netology.model.Photo?,
+        val product: ru.netology.model.Product?,
+        val button: ru.netology.model.Button?,
+        val previewPage: String,
+        val previewUrl: String
+    ) : ru.netology.model.Attachment("link", null)
+    data class App(
+        val id: Int,
+        val ownerId: Int,
+        val photo130: String,
+        val photo604: String
+    ) : ru.netology.model.Attachment("app", null)
+    data class Page(
+        val id: Int,
+        val groupId: Int,
+        val title: String
+    ) : ru.netology.model.Attachment("page", null)
+    object NotAttachment : ru.netology.model.Attachment("", null)
 }

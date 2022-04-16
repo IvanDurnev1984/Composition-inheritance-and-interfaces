@@ -1,6 +1,6 @@
 package ru.netology.model
 
-import ru.netology.model.attachments.Attachment
+import ru.netology.model.CopyImage
 
 data class Photo (
 

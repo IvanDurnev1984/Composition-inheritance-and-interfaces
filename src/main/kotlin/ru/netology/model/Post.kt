@@ -1,7 +1,5 @@
 package ru.netology.model
 
-import ru.netology.model.attachments.Attachment
-
 data class Post (
     val id: Int = 0,
     val ownerId: Int,
@@ -14,7 +12,7 @@ data class Post (
     val friendsOnly: Boolean,
     val postType: String,
 
-    val attachments: Array<ru.netology.model.attachments.Attachment>?,
+    val attachments: Array<ru.netology.model.Attachment>?,
     val signerId: Int,
     val canPin: Boolean,
     val canDelete: Boolean,

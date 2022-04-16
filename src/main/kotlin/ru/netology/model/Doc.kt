@@ -11,7 +11,8 @@ class Doc (
     val date: Long,
     val typeDoc: ru.netology.model.TypeDoc,
     val preview: ru.netology.model.Preview?,
-)
+
+    )
 {
 
 }

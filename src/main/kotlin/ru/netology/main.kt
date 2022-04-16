@@ -1,5 +1,4 @@
 import ru.netology.model.*
-import ru.netology.model.attachments.Attachment
 
 fun viewPost(post: ru.netology.model.Post) {
 
@@ -37,5 +36,10 @@ fun viewPost(post: ru.netology.model.Post) {
 fun getPostAttachment(post: ru.netology.model.Post) =
     post.attachments ?: "No attachment"
 
-
-
+fun attachIs(attach: ru.netology.model.Attachment) = when (attach) {
+    is ru.netology.model.Attachment.Link -> attach.type
+    is ru.netology.model.Attachment.Graffiti -> attach.type
+    is ru.netology.model.Attachment.Page -> attach.type
+    is ru.netology.model.Attachment.App -> attach.type
+    is ru.netology.model.Attachment.NotAttachment -> attach.type
+}
