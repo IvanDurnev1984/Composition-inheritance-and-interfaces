@@ -1,5 +1,5 @@
-import ru.netology.model.Note
-import ru.netology.model.Post
+import ru.netology.model.*
+import ru.netology.model.attachments.Attachment
 
 fun viewPost(post: ru.netology.model.Post) {
 
@@ -36,11 +36,6 @@ fun viewPost(post: ru.netology.model.Post) {
 
 fun getPostAttachment(post: ru.netology.model.Post) =
     post.attachments ?: "No attachment"
-
-fun getPostAttachmentNoteText(post: ru.netology.model.Post) =
-     post.attachments?.get(0)?.note?.text ?: "default"
-
-
 
 
 

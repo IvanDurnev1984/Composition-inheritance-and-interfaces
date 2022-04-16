@@ -1,8 +1,11 @@
 package ru.netology.model
 
+import ru.netology.model.attachments.Attachment
+
 data class Video (
     val id: Int,
     val ownerId: Int,
+
     val title: String,
     val description: String,
     val duration: Int,
@@ -35,14 +38,17 @@ data class Video (
     val added: Boolean,
     val isSubscribed: Boolean,
     val repeat: Boolean = true,
-    val type: ru.netology.model.TypeVideo,
+    val typeVideo: ru.netology.model.TypeVideo,
     val balance: Int,
     val liveStatus: ru.netology.model.LiveStatus,
     val live: Boolean,
     val upcoming: Boolean,
     val spectators: Int,
     val likes: ru.netology.model.LikesVideo,
-    val reposts: ru.netology.model.Repost
-    ) {
+    val reposts: ru.netology.model.Repost,
+
+    )
+{
+
 
 }

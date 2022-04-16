@@ -1,11 +1,8 @@
 package ru.netology
 
 import getPostAttachment
-import getPostAttachmentNoteText
-import ru.netology.model.*
 import org.junit.Assert.*
 import org.junit.Test
-import ru.netology.service.WallService
 import viewPost
 
 class MainKtTest {
@@ -38,7 +35,7 @@ class MainKtTest {
             likes = ru.netology.model.Likes(),
             reposts = ru.netology.model.Repost(),
             views = ru.netology.model.Views(),
-            attachments = emptyArray<ru.netology.model.Attachment>()
+            attachments = emptyArray<ru.netology.model.attachments.Attachment>()
         )
 
         val expected = ru.netology.model.Post(
@@ -66,7 +63,7 @@ class MainKtTest {
             likes = ru.netology.model.Likes(),
             reposts = ru.netology.model.Repost(),
             views = ru.netology.model.Views(),
-            attachments = emptyArray<ru.netology.model.Attachment>()
+            attachments = emptyArray<ru.netology.model.attachments.Attachment>()
         )
 
         service.add(post)
@@ -102,7 +99,7 @@ class MainKtTest {
             likes = ru.netology.model.Likes(),
             reposts = ru.netology.model.Repost(),
             views = ru.netology.model.Views(),
-            attachments = emptyArray<ru.netology.model.Attachment>()
+            attachments = emptyArray<ru.netology.model.attachments.Attachment>()
         )
 
         val expected = 1
@@ -142,7 +139,7 @@ class MainKtTest {
             likes = ru.netology.model.Likes(),
             reposts = ru.netology.model.Repost(),
             views = ru.netology.model.Views(),
-            attachments = emptyArray<ru.netology.model.Attachment>()
+            attachments = emptyArray<ru.netology.model.attachments.Attachment>()
         )
 
         val expected = 2
@@ -183,7 +180,7 @@ class MainKtTest {
             likes = ru.netology.model.Likes(),
             reposts = ru.netology.model.Repost(),
             views = ru.netology.model.Views(),
-            attachments = emptyArray<ru.netology.model.Attachment>()
+            attachments = emptyArray<ru.netology.model.attachments.Attachment>()
         )
 
         val expected = 2
@@ -224,7 +221,7 @@ class MainKtTest {
             likes = ru.netology.model.Likes(),
             reposts = ru.netology.model.Repost(),
             views = ru.netology.model.Views(),
-            attachments = emptyArray<ru.netology.model.Attachment>()
+            attachments = emptyArray<ru.netology.model.attachments.Attachment>()
         )
 
         val expected = ru.netology.model.Post(
@@ -252,7 +249,7 @@ class MainKtTest {
             likes = ru.netology.model.Likes(),
             reposts = ru.netology.model.Repost(),
             views = ru.netology.model.Views(),
-            attachments = emptyArray<ru.netology.model.Attachment>()
+            attachments = emptyArray<ru.netology.model.attachments.Attachment>()
         )
 
         service.add(post)
@@ -293,7 +290,7 @@ class MainKtTest {
             likes = ru.netology.model.Likes(),
             reposts = ru.netology.model.Repost(),
             views = ru.netology.model.Views(),
-            attachments = emptyArray<ru.netology.model.Attachment>()
+            attachments = emptyArray<ru.netology.model.attachments.Attachment>()
         )
 
         val expected = ru.netology.model.Post(
@@ -321,7 +318,7 @@ class MainKtTest {
             likes = ru.netology.model.Likes(),
             reposts = ru.netology.model.Repost(),
             views = ru.netology.model.Views(),
-            attachments = emptyArray<ru.netology.model.Attachment>()
+            attachments = emptyArray<ru.netology.model.attachments.Attachment>()
         )
 
         service.add(post)
@@ -400,67 +397,6 @@ class MainKtTest {
     }
 
     @Test
-    fun checkPostAttachmentNoteText() {
-        val attachment = ru.netology.model.Attachment(
-            photo = ru.netology.model.Photo(
-                id = 0, albumIid = 0, ownerIid = 0, userIid = 0,
-                text = "photo test", date = 160092938989L,
-                sizes = emptyArray(), width = 800, height = 600
-            ),
-            postedPhoto = ru.netology.model.PostedPhoto(id = 0, ownerId = 0, photo130 = "", photo_604 = ""),
-            note = ru.netology.model.Note(id = 0, title = "Title 1", text = "Test text on Note 1"),
-            video = null,
-            audio = null,
-            doc = ru.netology.model.Doc(),
-            graffiti = ru.netology.model.Graffiti(),
-            link = ru.netology.model.Link(),
-            app = ru.netology.model.App(),
-            poll = ru.netology.model.Poll(),
-            page = ru.netology.model.Page(),
-            album = ru.netology.model.Album(),
-            photosList = emptyList(),
-            market = ru.netology.model.Market(),
-            marketAlbum = ru.netology.model.MarketAlbum(),
-            sticker = ru.netology.model.Stiker(),
-            prettyCards = ru.netology.model.PrettyCard(),
-            event = null
-        )
-
-
-        val post = ru.netology.model.Post(
-            ownerId = 0,
-            fromId = 0,
-            createdBy = 0,
-            date = "14.04.2022",
-            text = "Text test",
-            replyOwnerId = 0,
-            replyPostIid = 0,
-            friendsOnly = false,
-            postType = "first",
-            signerId = 1234,
-            canPin = false,
-            canDelete = true,
-            canEdit = false,
-            isPinned = false,
-            markedAsAds = false,
-            isFavorite = false,
-            donut = ru.netology.model.Donut(),
-            postponedId = 0,
-            comments = ru.netology.model.Comments(),
-            copyright = ru.netology.model.Copyright(),
-            likes = ru.netology.model.Likes(),
-            reposts = ru.netology.model.Repost(),
-            views = ru.netology.model.Views(),
-            attachments = arrayOf(attachment)
-        )
-
-        val expected = "Test text on Note 1"
-
-        val result = getPostAttachmentNoteText(post)
-        assertEquals(expected, result)
-    }
-
-    @Test
     fun checkPostEmptyAttachmentNoteText() {
         val post = ru.netology.model.Post(
             ownerId = 0,
@@ -489,10 +425,220 @@ class MainKtTest {
             attachments = null
         )
 
-        val expected = "default"
+        val expected = "none"
 
-        val result = getPostAttachmentNoteText(post)
+        val result = post.attachments?.get(0)?.type ?: "none"
+//            getPostAttachmentNoteText(post)
         assertEquals(expected, result)
     }
+
+    @Test
+    fun checkPostAttachmentNoteText() {
+        val note = ru.netology.model.Note(
+            id = 0, ownerIid = 0, title = "Title 1", text = "Test text on Note 1",
+            date = 1609879870328798L, comments = 1, readComments = 0, viewUrl = "url_note"
+        )
+
+        val photo = ru.netology.model.Photo(
+            id = 0, ownerIid = 0, text = "Test text on Photo 1", date = 1609879870328798L,
+            albumIid = 12, userIid = 232, sizes = emptyArray(), width = 1920, height = 1080
+        )
+
+        val video = ru.netology.model.Video(
+            id = 1,
+            ownerId = 0,
+            title = "Title Video 1",
+            description = "video id 1",
+            duration = 12,
+            image = emptyArray(),
+            firstFrame = emptyArray(),
+            date = 160872387L,
+            addingDate = 16078182349800L,
+            views = 42,
+            localViews = 24,
+            comments = 3,
+            player = "",
+            platform = "",
+            canEdit = false,
+            canAdd = false,
+            isPrivate = false,
+            accessKey = "key",
+            processing = false,
+            isFavorite = false,
+            canComment = false,
+            isCanEdit = false,
+            canLike = false,
+            canRepost = false,
+            canSubscribe = false,
+            CanAddToFaves = false,
+            canAttachLink = false,
+            width = 1920,
+            height = 1080,
+            userId = 2,
+            converting = false,
+            added = false,
+            isSubscribed = false,
+            repeat = true,
+            typeVideo = ru.netology.model.TypeVideo.VIDEO,
+            balance = 3,
+            liveStatus = ru.netology.model.LiveStatus.STARTED,
+            live = false,
+            upcoming = false,
+            spectators = 2,
+            likes = ru.netology.model.LikesVideo(count = 3, userLikes = false),
+            reposts = ru.netology.model.Repost()
+        )
+
+        var post = ru.netology.model.Post(
+            ownerId = 0,
+            fromId = 0,
+            createdBy = 0,
+            date = "14.04.2022",
+            text = "Text test",
+            replyOwnerId = 0,
+            replyPostIid = 0,
+            friendsOnly = false,
+            postType = "first",
+            signerId = 1234,
+            canPin = false,
+            canDelete = true,
+            canEdit = false,
+            isPinned = false,
+            markedAsAds = false,
+            isFavorite = false,
+            donut = ru.netology.model.Donut(),
+            postponedId = 0,
+            comments = ru.netology.model.Comments(),
+            copyright = ru.netology.model.Copyright(),
+            likes = ru.netology.model.Likes(),
+            reposts = ru.netology.model.Repost(),
+            views = ru.netology.model.Views(),
+            attachments = emptyArray() //arrayOf() //note, photo, video)
+        )
+        val expected = "Test text on Note 1"
+
+        val attNote = ru.netology.model.attachments.NoteAttachment(value = note)
+        post = post.copy(attachments = post.attachments?.plus(attNote))
+
+        val attPhoto = ru.netology.model.attachments.PhotoAttachment(value = photo)
+        post = post.copy(attachments = post.attachments?.plus(attPhoto))
+
+        val attVideo = ru.netology.model.attachments.VideoAttachment(value = video)
+        post = post.copy(attachments = post.attachments?.plus(attVideo))
+
+
+
+        val noteAttachment = post.attachments?.get(0)
+        if (noteAttachment is ru.netology.model.attachments.NoteAttachment) {
+            val result = noteAttachment.value.text
+            assertEquals(expected, result)
+        }
+
+    }
+
+    @Test
+    fun checkPostAttachmentPhotoText() {
+        val note = ru.netology.model.Note(
+            id = 0, ownerIid = 0, title = "Title 1", text = "Test text on Note 1",
+            date = 1609879870328798L, comments = 1, readComments = 0, viewUrl = "url_note"
+        )
+
+        val photo = ru.netology.model.Photo(
+            id = 1, ownerIid = 0, text = "Test text on Photo 1", date = 1609879870328798L,
+            albumIid = 12, userIid = 232, sizes = emptyArray(), width = 1920, height = 1080
+        )
+
+        val video = ru.netology.model.Video(
+            id = 1,
+            ownerId = 0,
+            title = "Title Video 1",
+            description = "video id 1",
+            duration = 12,
+            image = emptyArray(),
+            firstFrame = emptyArray(),
+            date = 160872387L,
+            addingDate = 16078182349800L,
+            views = 42,
+            localViews = 24,
+            comments = 3,
+            player = "",
+            platform = "",
+            canEdit = false,
+            canAdd = false,
+            isPrivate = false,
+            accessKey = "key",
+            processing = false,
+            isFavorite = false,
+            canComment = false,
+            isCanEdit = false,
+            canLike = false,
+            canRepost = false,
+            canSubscribe = false,
+            CanAddToFaves = false,
+            canAttachLink = false,
+            width = 1920,
+            height = 1080,
+            userId = 2,
+            converting = false,
+            added = false,
+            isSubscribed = false,
+            repeat = true,
+            typeVideo = ru.netology.model.TypeVideo.VIDEO,
+            balance = 3,
+            liveStatus = ru.netology.model.LiveStatus.STARTED,
+            live = false,
+            upcoming = false,
+            spectators = 2,
+            likes = ru.netology.model.LikesVideo(count = 3, userLikes = false),
+            reposts = ru.netology.model.Repost()
+        )
+
+        var post = ru.netology.model.Post(
+            ownerId = 0,
+            fromId = 0,
+            createdBy = 0,
+            date = "14.04.2022",
+            text = "Text test",
+            replyOwnerId = 0,
+            replyPostIid = 0,
+            friendsOnly = false,
+            postType = "first",
+            signerId = 1234,
+            canPin = false,
+            canDelete = true,
+            canEdit = false,
+            isPinned = false,
+            markedAsAds = false,
+            isFavorite = false,
+            donut = ru.netology.model.Donut(),
+            postponedId = 0,
+            comments = ru.netology.model.Comments(),
+            copyright = ru.netology.model.Copyright(),
+            likes = ru.netology.model.Likes(),
+            reposts = ru.netology.model.Repost(),
+            views = ru.netology.model.Views(),
+            attachments = emptyArray()
+        )
+        val expected = "Test text on Photo 1"
+
+        val attNote = ru.netology.model.attachments.NoteAttachment(value = note)
+        post = post.copy(attachments = post.attachments?.plus(attNote))
+
+        val attPhoto = ru.netology.model.attachments.PhotoAttachment(value = photo)
+        post = post.copy(attachments = post.attachments?.plus(attPhoto))
+
+        val attVideo = ru.netology.model.attachments.VideoAttachment(value = video)
+        post = post.copy(attachments = post.attachments?.plus(attVideo))
+
+        val photoAttachment = post.attachments?.get(0)
+        if (photoAttachment is ru.netology.model.attachments.PhotoAttachment) {
+            val result = photoAttachment.value.text
+            assertEquals(expected, result)
+        }
+
+
+
+    }
+
 
 }
